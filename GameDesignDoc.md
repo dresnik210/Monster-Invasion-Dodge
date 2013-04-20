@@ -1,89 +1,33 @@
 # Game Design Document
-This is a place holder for your game design document. You are advised to write your document in [Markdown](http://daringfireball.net/projects/markdown/) and the following section will show you how to write a document using Markdown markup.
 
-Alternativley, you can write your document in plain text if you wish.
+## Part 1
 
-----
+The primary "things" I will have are a user controlled "hero" and five different types of "monsters."
 
-## Markdown
-Markdown is a human-readable structured plain text format that is used to convert text into HTML. GitHub automatically renders Markdown into HTML.
+The hero and each type of monster will look different through the use of PixMapItems.
 
-This is a crash course on how to use Markdown. The following section will show you the plain text used to generate the document shown in the rendering section.
+The five types of monsters are as follows:
+  *`1.` Bombers: big monsters that move straight down at a slow pace
+  *`2.` Rockets: small monsters that move straight down at a fast pace
+  *`3.` Swervers: medium sized monsters that zig zag as they come down the screen
+  *`4.` Flyers: medium sized monsters that come down in a stair pattern
+  *`5.` Bouncers: medium sized monsters that come down at a medium pace and bounce back up once after hitting the bottom of the screen
+  
+## Part 2
 
-### Code
+The game will use the left and right arrows keys to move the player's character from side to side to avoid getting hit by the various monsters coming down the screen.
 
-```
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
+## Part 3
 
-You can also write in **bold** or _italics_. You can also ~~strike through~~ or write inline `Code Segments`
+The score only goes up. It increases by one when a monster is successfully avoided.
 
->Blockquotes are done as such.
+## Part 4
 
-Just make sure to separate paragraphs with an emptyline. 
-Otherwise, they are considered in the same paragraph.
+The player dies when the "hero" character gets hit by a monster. The player only has one life so once they get hit a single time the game is over.
 
-You link to [Google](https://www.google.com) as such and lists are written has follows:
-  1. First you indent with two empty spaces.
-  1. Then, you use:
-    * `1.` to signal an ordered (i.e. numbered) list, or
-    * `*`, `-`, `+` to represent an unordered list.
-      1. Make sure to maintain indentation
-      1. As it is used to identify sub-lists
-  1. Numbering and symboles don't matter as they are auto-generated later.
+## Part 5
 
-Tables are pretty easy to make:
+Game layout mockup:
 
-| Tables        | Are           | Easy          |
-| ------------- |:-------------:| -------------:|
-| left-aligned  | centered      | right-aligned |
-| header are    | bolded and    | centered      |
-| zebra stripes | are neat      | 1             |
-
-
-Images are added inline by using the following syntax
-![alt text](http://octodex.github.com/images/Professortocat_v2.png "Image Title")
-```
-
-----
-
-### Rendering
-This section shows the rendering of the plain text above.
-
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-
-You can also write in **bold** or _italics_. You can also ~~strike through~~ or write inline `Code Segments`
-
->Blockquotes are done as such.
-
-Just make sure to separate paragraphs with an emptyline. 
-Otherwise, they are considered in the same paragraph.
-
-You link to [Google](https://www.google.com) as such and lists are written has follows:
-  1. First you indent with two empty spaces.
-  1. Then, you use:
-    * `1.` to signal an ordered (i.e. numbered) list, or
-    * `*`, `-`, `+` to represent an unordered list.
-      1. Make sure to maintain indentation
-      1. As it is used to identify sub-lists
-  1. Numbering and symboles don't matter as they are auto-generated later.
-
-Tables are pretty easy to make:
-
-| Tables        | Are           | Easy          |
-| ------------- |:-------------:| -------------:|
-| left-aligned  | centered      | right-aligned |
-| header are    | bolded and    | centered      |
-| zebra stripes | are neat      | 1             |
-
-
-Images are added inline by using the following syntax
-![alt text](http://octodex.github.com/images/Professortocat_v2.png "Image Title")
+![Check repo if image doesn't come up](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/gamelayout.png?raw=true "Game Layout")
 
