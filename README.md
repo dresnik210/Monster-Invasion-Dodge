@@ -1,8 +1,8 @@
 # Game - Programming Assignments Private Repository
 ### Student Information
-  + Name: Tommy Trojan
-  + USC Email: ttrojan@usc.edu
-  + USC ID: 0123456789
+  + Name: Dylan Resnik
+  + USC Email: dylanres@usc.edu
+  + USC ID: 4571010169
 
 ### Game Information
   + Game Name: myAwsomeGame
