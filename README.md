@@ -14,11 +14,14 @@
 The grader should use the following procedure to compile and run the code:
 ```shell
 #Compile Instructions
-echo "Write command here"
+qmake -project
+qmake
+make
 #Doxygen Instructions
-echo "Write command here"
+doxygen -g
+doxygen Doxyfile
 #Command to run
-echo "Write command here"
+./game_dylanres
 ```
 
 ### Screenshots -- [Optional]
