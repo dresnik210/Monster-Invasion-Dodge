@@ -13,7 +13,8 @@ class Monster
   protected:
   	int xCoor;
 	int yCoor;
-	//QGraphicsPixmapItem monsterPic;
+	int xVelocity;
+	int yVelocity;
 };
 
 #endif
