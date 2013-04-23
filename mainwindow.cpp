@@ -30,7 +30,10 @@ MainWindow::MainWindow()  {
     connect(timer, SIGNAL(timeout()), this, SLOT(handleTimer()));
     timerCount = 0;
     
-    QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc()));   
+    QObject::connect(start,SIGNAL(clicked()),this,SLOT(spawnBomber()));
+    QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
+    
+    bomberPic = new QPixmap("bomber.jpg"); 
 }
 
 MainWindow::~MainWindow()
@@ -52,4 +55,11 @@ void MainWindow::handleTimer() /** Function for tile animation */
     	timer->stop();	
     }
 }
+
+void MainWindow::spawnBomber()
+{
+	Bomber* newBomber = new Bomber(0,0,*bomberPic);
+	scene->addItem(newBomber);
+}
+
 

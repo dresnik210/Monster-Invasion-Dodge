@@ -21,6 +21,9 @@
 #include <stdlib.h>
 #include <string>
 #include <QRectF>
+#include <QPixmap>
+
+#include "bomber.h"
 
 #define WINDOW_MAX_X 250
 #define WINDOW_MAX_Y 250
@@ -42,10 +45,12 @@ private:
 	QHBoxLayout *buttonsRow;
 	QTimer *timer;
 	int timerCount;
+	QPixmap* bomberPic;
 	
 public slots:
 	void quitFunc();
 	void handleTimer();
+	void spawnBomber();
 };
 
 #endif // MAINWINDOW_H
