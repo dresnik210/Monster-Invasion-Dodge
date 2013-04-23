@@ -27,11 +27,12 @@ MainWindow::MainWindow()  {
     this->setLayout(mainLayout);
     
     timer = new QTimer(this);
-    timer->setInterval(10);
+    timer->setInterval(100);
     connect(timer, SIGNAL(timeout()), this, SLOT(handleTimer()));
     timerCount = 0;
     
-    QObject::connect(start,SIGNAL(clicked()),this,SLOT(spawnBouncer()));
+    QObject::connect(start,SIGNAL(clicked()),this,SLOT(startTimer()));
+    QObject::connect(pause,SIGNAL(clicked()),this,SLOT(stopTimer()));
     QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
     
     bomberPic = new QPixmap("bomber.jpg"); 
@@ -52,42 +53,78 @@ void MainWindow::quitFunc()
 	exit(EXIT_FAILURE);
 }
 
+void MainWindow::startTimer()
+{
+	timer->start();	
+}
+
+void MainWindow::stopTimer()
+{
+	timer->stop();
+}
+
 void MainWindow::handleTimer() /** Function for tile animation */
 {
-    timerCount++;
-    if(timerCount == 3)
+    std::cout << timerCount << std::endl;
+    if(timerCount == 50)
     {
-    	timer->stop();	
+    	timerCount = 0;
     }
+    if(timerCount == 0)
+    {
+    	spawnBomber();
+    }
+    if(timerCount == 10)
+    {
+    	spawnRocket();
+    }
+    if(timerCount == 20)
+    {
+    	spawnSwerver();
+    }
+    if(timerCount == 30)
+    {
+    	spawnFlyer();
+    }
+    if(timerCount == 40)
+    {
+    	spawnBouncer();
+    }
+    timerCount++;
 }
 
 void MainWindow::spawnBomber()
 {
-	Bomber* newBomber = new Bomber(0,0,*bomberPic);
+	int xVal = rand() % 380;
+	Bomber* newBomber = new Bomber(xVal,0,*bomberPic);
 	scene->addItem(newBomber);
 }
 
 void MainWindow::spawnRocket()
 {
-	Rocket* newRocket = new Rocket(0,0,*rocketPic);
+	int xVal = rand() % 380;
+	Rocket* newRocket = new Rocket(xVal,0,*rocketPic);
 	scene->addItem(newRocket);
 }
 
 void MainWindow::spawnSwerver()
 {
-	Swerver* newSwerver = new Swerver(0,0,*swerverPic);
+	int xVal = rand() % 380;
+	Swerver* newSwerver = new Swerver(xVal,0,*swerverPic);
 	scene->addItem(newSwerver);
 }
 
 void MainWindow::spawnFlyer()
 {
-	Flyer* newFlyer = new Flyer(0,0,*flyerPic);
+	int xVal = rand() % 380;
+	Flyer* newFlyer = new Flyer(xVal,0,*flyerPic);
 	scene->addItem(newFlyer);
 }
 
 void MainWindow::spawnBouncer()
 {
-	Bouncer* newBouncer = new Bouncer(0,0,*bouncerPic);
+	int xVal = rand() % 380;
+	Bouncer* newBouncer = new Bouncer(xVal,0,*bouncerPic);
 	scene->addItem(newBouncer);
 }
 	

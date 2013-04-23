@@ -54,9 +54,12 @@ private:
 	QPixmap* swerverPic;
 	QPixmap* flyerPic;
 	QPixmap* bouncerPic;
+	std::vector<Monster*> monsterList;
 	
 public slots:
 	void quitFunc();
+	void startTimer();
+	void stopTimer();
 	void handleTimer();
 	void spawnBomber();
 	void spawnRocket();
