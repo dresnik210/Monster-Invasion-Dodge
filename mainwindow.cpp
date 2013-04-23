@@ -5,8 +5,9 @@ MainWindow::MainWindow()  {
     view = new QGraphicsView(scene);
    
     /**This sets the size of the window and gives it a title. */
-    view->setFixedSize( 500, 500 );
-    view->setWindowTitle( "Graphical 8-Tile Puzzle");
+    view->setFixedSize(402,402);
+    
+    scene->setSceneRect(0,0,400,400);
     
     start = new QPushButton("Start");
     pause = new QPushButton("Pause");
@@ -30,10 +31,14 @@ MainWindow::MainWindow()  {
     connect(timer, SIGNAL(timeout()), this, SLOT(handleTimer()));
     timerCount = 0;
     
-    QObject::connect(start,SIGNAL(clicked()),this,SLOT(spawnBomber()));
+    QObject::connect(start,SIGNAL(clicked()),this,SLOT(spawnBouncer()));
     QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
     
     bomberPic = new QPixmap("bomber.jpg"); 
+    rocketPic = new QPixmap("rocket.png");
+	swerverPic = new QPixmap("swerver.jpg");
+	flyerPic = new QPixmap("flyer.png");
+	bouncerPic = new QPixmap("bouncer.jpg");
 }
 
 MainWindow::~MainWindow()
@@ -62,4 +67,27 @@ void MainWindow::spawnBomber()
 	scene->addItem(newBomber);
 }
 
+void MainWindow::spawnRocket()
+{
+	Rocket* newRocket = new Rocket(0,0,*rocketPic);
+	scene->addItem(newRocket);
+}
 
+void MainWindow::spawnSwerver()
+{
+	Swerver* newSwerver = new Swerver(0,0,*swerverPic);
+	scene->addItem(newSwerver);
+}
+
+void MainWindow::spawnFlyer()
+{
+	Flyer* newFlyer = new Flyer(0,0,*flyerPic);
+	scene->addItem(newFlyer);
+}
+
+void MainWindow::spawnBouncer()
+{
+	Bouncer* newBouncer = new Bouncer(0,0,*bouncerPic);
+	scene->addItem(newBouncer);
+}
+	

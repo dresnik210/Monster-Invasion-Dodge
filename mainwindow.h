@@ -24,6 +24,10 @@
 #include <QPixmap>
 
 #include "bomber.h"
+#include "rocket.h"
+#include "swerver.h"
+#include "flyer.h"
+#include "bouncer.h"
 
 #define WINDOW_MAX_X 250
 #define WINDOW_MAX_Y 250
@@ -46,11 +50,19 @@ private:
 	QTimer *timer;
 	int timerCount;
 	QPixmap* bomberPic;
+	QPixmap* rocketPic;
+	QPixmap* swerverPic;
+	QPixmap* flyerPic;
+	QPixmap* bouncerPic;
 	
 public slots:
 	void quitFunc();
 	void handleTimer();
 	void spawnBomber();
+	void spawnRocket();
+	void spawnSwerver();
+	void spawnFlyer();
+	void spawnBouncer();
 };
 
 #endif // MAINWINDOW_H
