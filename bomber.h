@@ -8,6 +8,7 @@ class Bomber : public Monster, public QGraphicsPixmapItem
   public:
   	Bomber(int x, int y, QPixmap& pixmap);
   	void move();
+  	int rotateCount;
   private:
 
 };

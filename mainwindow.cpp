@@ -61,11 +61,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 	switch(e->key())
 	{
 		case Qt::Key_Left:
-			std::cout << "LEFT" << std::endl;
 			user->moveLeft();
 			break;
 		case Qt::Key_Right:
-			std::cout << "RIGHT" << std::endl;
 			user->moveRight();
 			break;
 	}
@@ -89,7 +87,6 @@ void MainWindow::stopTimer()
 
 void MainWindow::handleTimer() /** Function for tile animation */
 {
-    //std::cout << timerCount << std::endl;
     if(timerCount == 30)
     {
     	timerCount = 0;
@@ -98,7 +95,7 @@ void MainWindow::handleTimer() /** Function for tile animation */
     }
     if(timerCount == 0)
     {
-    	switch(3/*rand() % 5*/){
+    	switch(rand() % 5){
 		case 0:
 			spawnBomber();
 			break;
@@ -125,7 +122,6 @@ void MainWindow::handleTimer() /** Function for tile animation */
     	}
     }
     timerCount++;
-    std::cout << "List size: " << monsterList.size() << std::endl;
 }
 
 void MainWindow::spawnBomber()
