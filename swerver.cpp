@@ -16,7 +16,7 @@ void Swerver::move()
 	{
 		xVelocity = -xVelocity;
 	}
-	if(xCoor <= 10)
+	if(xCoor <= 4)
 	{
 		xVelocity = -xVelocity;
 	}

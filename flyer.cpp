@@ -4,10 +4,10 @@ Flyer::Flyer(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
 {
 	xCoor = x;
 	yCoor = y;
-	xVelocity = 8;
+	xVelocity = -8;
 	yVelocity = 8;
 	setPos(x,y);
-	setScale(0.08);
+	setScale(0.10);
 }
 
 void Flyer::move()
@@ -21,9 +21,9 @@ void Flyer::move()
 			yCoor = yCoor + yVelocity;
 			break;
 	}
-	if(xCoor >= 370)
+	if(xCoor <= -5)
 	{
-		xCoor = -10;
+		xCoor = 368;
 	}
 	setPos(xCoor,yCoor);
 }

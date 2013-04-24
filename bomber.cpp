@@ -7,7 +7,7 @@ Bomber::Bomber(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
 	xVelocity = 0;
 	yVelocity = 5;
 	setPos(x,y);
-	setScale(0.08);
+	setScale(0.16);
 }
 
 void Bomber::move()

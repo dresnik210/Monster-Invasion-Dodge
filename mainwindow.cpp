@@ -3,8 +3,6 @@
 MainWindow::MainWindow()  {
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
-    
-    setFocus();
    
     /**This sets the size of the window and gives it a title. */
     view->setFixedSize(402,402);
@@ -41,12 +39,12 @@ MainWindow::MainWindow()  {
     QObject::connect(pause,SIGNAL(clicked()),this,SLOT(stopTimer()));
     QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
     
-    bomberPic = new QPixmap("bomber.jpg"); 
+    bomberPic = new QPixmap("bomber.png"); 
     rocketPic = new QPixmap("rocket.png");
-	swerverPic = new QPixmap("swerver.jpg");
+	swerverPic = new QPixmap("swerver.png");
 	flyerPic = new QPixmap("flyer.png");
-	bouncerPic = new QPixmap("bouncer.jpg");
-	userPic = new QPixmap("userplayer.jpg");
+	bouncerPic = new QPixmap("bouncer.png");
+	userPic = new QPixmap("userplayer.png");
 	
 	user = new UserPlayer(*userPic);
 	scene->addItem(user);
@@ -100,7 +98,7 @@ void MainWindow::handleTimer() /** Function for tile animation */
     }
     if(timerCount == 0)
     {
-    	switch(rand() % 5){
+    	switch(3/*rand() % 5*/){
 		case 0:
 			spawnBomber();
 			break;
@@ -148,7 +146,7 @@ void MainWindow::spawnRocket()
 
 void MainWindow::spawnSwerver()
 {
-	int xVal = rand() % 380;
+	int xVal = rand() % 349+5;
 	Swerver* newSwerver = new Swerver(xVal,0,*swerverPic);
 	scene->addItem(newSwerver);
 	monsterList.push_back(newSwerver);

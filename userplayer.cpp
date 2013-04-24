@@ -3,9 +3,9 @@
 UserPlayer::UserPlayer(QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
 {
 	xCoor = 170;
-	yCoor = 325;
+	yCoor = 327;
 	setPos(xCoor,yCoor);
-	setScale(0.04);
+	setScale(0.25);
 }
 
 void UserPlayer::moveLeft()
