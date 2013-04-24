@@ -5,9 +5,10 @@
 #include <QPixmap>
 #include <stdlib.h>
 
-class Monster
+class Monster : public QGraphicsPixmapItem
 {
   public:
+  	Monster(QPixmap& pixmap);
 	virtual ~Monster() { };
 	virtual void move() = 0;
 	virtual int getYCoor() { return yCoor; };

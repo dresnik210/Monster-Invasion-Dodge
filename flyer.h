@@ -3,7 +3,7 @@
 
 #include "monster.h"
 
-class Flyer : public Monster, public QGraphicsPixmapItem
+class Flyer : public Monster
 {
   public:
   	Flyer(int x, int y, QPixmap& pixmap);

@@ -3,7 +3,7 @@
 
 #include "monster.h"
 
-class Bomber : public Monster, public QGraphicsPixmapItem
+class Bomber : public Monster
 {
   public:
   	Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap);

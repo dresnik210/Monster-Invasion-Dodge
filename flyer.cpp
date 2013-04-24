@@ -1,6 +1,6 @@
 #include "flyer.h"
 
-Flyer::Flyer(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
+Flyer::Flyer(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 {
 	xCoor = x;
 	yCoor = y;

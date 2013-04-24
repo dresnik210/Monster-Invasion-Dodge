@@ -1,6 +1,6 @@
 #include "bomber.h"
 
-Bomber::Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap) : QGraphicsPixmapItem(pixmap)
+Bomber::Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap) : Monster(pixmap)
 {
 	xCoor = x;
 	yCoor = y;

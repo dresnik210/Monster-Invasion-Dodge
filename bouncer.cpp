@@ -1,6 +1,6 @@
 #include "bouncer.h"
 
-Bouncer::Bouncer(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
+Bouncer::Bouncer(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 {
 	xCoor = x;
 	yCoor = y;

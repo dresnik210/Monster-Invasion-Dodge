@@ -1,6 +1,6 @@
 #include "swerver.h"
 
-Swerver::Swerver(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
+Swerver::Swerver(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 {
 	xCoor = x;
 	yCoor = y;

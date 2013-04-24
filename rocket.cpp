@@ -1,6 +1,6 @@
 #include "rocket.h"
 
-Rocket::Rocket(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
+Rocket::Rocket(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 {
 	xCoor = x;
 	yCoor = y;

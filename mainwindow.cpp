@@ -117,6 +117,10 @@ void MainWindow::handleTimer() /** Function for tile animation */
     for(unsigned int i=0;i<monsterList.size();i++)
     {
     	monsterList[i]->move();
+    	if(monsterList[i]->collidesWithItem(user))
+    	{
+    		stopTimer();
+    	}
     	if(monsterList[i]->getYCoor() >= 450)
     	{
     		monsterList.erase(monsterList.begin()+i);

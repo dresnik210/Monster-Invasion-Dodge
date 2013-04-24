@@ -3,7 +3,7 @@
 
 #include "monster.h"
 
-class Bouncer : public Monster, public QGraphicsPixmapItem
+class Bouncer : public Monster
 {
   public:
   	Bouncer(int x, int y, QPixmap& pixmap);
