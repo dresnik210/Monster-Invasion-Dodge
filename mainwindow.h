@@ -22,12 +22,14 @@
 #include <string>
 #include <QRectF>
 #include <QPixmap>
+#include <QKeyEvent>
 
 #include "bomber.h"
 #include "rocket.h"
 #include "swerver.h"
 #include "flyer.h"
 #include "bouncer.h"
+#include "userplayer.h"
 
 #define WINDOW_MAX_X 250
 #define WINDOW_MAX_Y 250
@@ -39,6 +41,9 @@ public:
     explicit MainWindow();
     ~MainWindow();
     
+protected:
+	void keyPressEvent(QKeyEvent *e);
+    
 private:
     QPushButton *start;
     QPushButton *pause;
@@ -49,11 +54,14 @@ private:
 	QHBoxLayout *buttonsRow;
 	QTimer *timer;
 	int timerCount;
+	int timerInterval;
 	QPixmap* bomberPic;
 	QPixmap* rocketPic;
 	QPixmap* swerverPic;
 	QPixmap* flyerPic;
 	QPixmap* bouncerPic;
+	QPixmap* userPic;
+	UserPlayer* user;
 	std::vector<Monster*> monsterList;
 	
 public slots:

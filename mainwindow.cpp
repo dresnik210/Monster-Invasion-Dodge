@@ -3,6 +3,8 @@
 MainWindow::MainWindow()  {
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
+    
+    setFocus();
    
     /**This sets the size of the window and gives it a title. */
     view->setFixedSize(402,402);
@@ -27,7 +29,8 @@ MainWindow::MainWindow()  {
     this->setLayout(mainLayout);
     
     timer = new QTimer(this);
-    timer->setInterval(100);
+    timerInterval = 100;
+    timer->setInterval(timerInterval);
     connect(timer, SIGNAL(timeout()), this, SLOT(handleTimer()));
     timerCount = 0;
     
@@ -40,12 +43,31 @@ MainWindow::MainWindow()  {
 	swerverPic = new QPixmap("swerver.jpg");
 	flyerPic = new QPixmap("flyer.png");
 	bouncerPic = new QPixmap("bouncer.jpg");
+	userPic = new QPixmap("userplayer.jpg");
+	
+	user = new UserPlayer(*userPic);
+	scene->addItem(user);
 }
 
 MainWindow::~MainWindow()
 {
     delete scene;
     delete view;
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
+	switch(e->key())
+	{
+		case Qt::Key_Left:
+			std::cout << "LEFT" << std::endl;
+			user->moveLeft();
+			break;
+		case Qt::Key_Right:
+			std::cout << "RIGHT" << std::endl;
+			user->moveRight();
+			break;
+	}
 }
 
 void MainWindow::quitFunc()
@@ -56,6 +78,7 @@ void MainWindow::quitFunc()
 void MainWindow::startTimer()
 {
 	timer->start();	
+	setFocus();
 }
 
 void MainWindow::stopTimer()
@@ -66,29 +89,31 @@ void MainWindow::stopTimer()
 void MainWindow::handleTimer() /** Function for tile animation */
 {
     //std::cout << timerCount << std::endl;
-    if(timerCount == 50)
+    if(timerCount == 30)
     {
     	timerCount = 0;
+    	timerInterval = timerInterval - 2;
+    	timer->setInterval(timerInterval);
     }
     if(timerCount == 0)
     {
-    	spawnBomber();
-    }
-    if(timerCount == 10)
-    {
-    	spawnRocket();
-    }
-    if(timerCount == 20)
-    {
-    	spawnSwerver();
-    }
-    if(timerCount == 30)
-    {
-    	spawnFlyer();
-    }
-    if(timerCount == 40)
-    {
-    	spawnBouncer();
+    	switch(rand() % 5){
+		case 0:
+			spawnBomber();
+			break;
+		case 1:
+			spawnRocket();
+			break;
+		case 2:
+			spawnSwerver();
+			break;
+		case 3:
+			spawnFlyer();
+			break;
+		case 4:
+			spawnBouncer();
+			break;
+		}
     }
     for(unsigned int i=0;i<monsterList.size();i++)
     {

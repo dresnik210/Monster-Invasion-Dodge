@@ -7,7 +7,7 @@ Bouncer::Bouncer(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
 	xVelocity = 5;
 	yVelocity = 10;
 	setPos(x,y);
-	setScale(0.08);
+	setScale(0.06);
 	bounceCheck = 0;
 }
 
