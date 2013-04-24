@@ -11,6 +11,9 @@ MainWindow::MainWindow()  {
     
     scene->setSceneRect(0,0,400,400);
     
+    background = new QPixmap("sky.jpg");
+    scene->addPixmap((background->scaled(400,400)));
+    
     start = new QPushButton("Start");
     pause = new QPushButton("Pause");
     quit = new QPushButton("Quit");

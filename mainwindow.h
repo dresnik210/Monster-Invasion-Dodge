@@ -55,6 +55,7 @@ private:
 	QTimer *timer;
 	int timerCount;
 	int timerInterval;
+	QPixmap* background;
 	QPixmap* bomberPic;
 	QPixmap* rocketPic;
 	QPixmap* swerverPic;
