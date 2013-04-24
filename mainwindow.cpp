@@ -59,14 +59,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
-	switch(e->key())
+	if(timer->isActive())
 	{
-		case Qt::Key_Left:
-			user->moveLeft();
-			break;
-		case Qt::Key_Right:
-			user->moveRight();
-			break;
+		switch(e->key())
+		{
+			case Qt::Key_Left:
+				user->moveLeft();
+				break;
+			case Qt::Key_Right:
+				user->moveRight();
+				break;
+		}
 	}
 }
 
