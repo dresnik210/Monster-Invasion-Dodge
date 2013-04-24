@@ -6,11 +6,11 @@
 class Bomber : public Monster, public QGraphicsPixmapItem
 {
   public:
-  	Bomber(int x, int y, QPixmap& pixmap);
+  	Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap);
   	void move();
-  	int rotateCount;
+  	QGraphicsPixmapItem* explosion;
   private:
-
+  	int rotateCount;
 };
 
 #endif

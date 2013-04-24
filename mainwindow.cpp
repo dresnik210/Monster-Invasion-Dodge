@@ -39,7 +39,8 @@ MainWindow::MainWindow()  {
     QObject::connect(pause,SIGNAL(clicked()),this,SLOT(stopTimer()));
     QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
     
-    bomberPic = new QPixmap("bomber.png"); 
+    bomberPic = new QPixmap("bomber.png");
+    explosion = new QPixmap("explosion.png");
     rocketPic = new QPixmap("rocket.png");
 	swerverPic = new QPixmap("swerver.png");
 	flyerPic = new QPixmap("flyer.png");
@@ -127,8 +128,9 @@ void MainWindow::handleTimer() /** Function for tile animation */
 void MainWindow::spawnBomber()
 {
 	int xVal = rand() % 380;
-	Bomber* newBomber = new Bomber(xVal,0,*bomberPic);
+	Bomber* newBomber = new Bomber(xVal,0,*bomberPic,*explosion);
 	scene->addItem(newBomber);
+	scene->addItem(newBomber->explosion);
 	monsterList.push_back(newBomber);
 }
 

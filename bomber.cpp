@@ -1,6 +1,6 @@
 #include "bomber.h"
 
-Bomber::Bomber(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
+Bomber::Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap) : QGraphicsPixmapItem(pixmap)
 {
 	xCoor = x;
 	yCoor = y;
@@ -9,6 +9,9 @@ Bomber::Bomber(int x, int y, QPixmap& pixmap) : QGraphicsPixmapItem(pixmap)
 	setPos(x,y);
 	setScale(0.16);
 	rotateCount = 0;
+	explosion = new QGraphicsPixmapItem(explosionPixmap);
+	explosion->setPos(500,500);
+	explosion->setScale(0.2);
 }
 
 void Bomber::move()
@@ -60,8 +63,47 @@ void Bomber::move()
 	}
 	else if(yCoor >= 370 && rotateCount == 8)
 	{
-		yCoor = yCoor + yVelocity;
+		setScale(0.18);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 9)
+	{
+		setScale(0.20);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 10)
+	{
+		setScale(0.22);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 11)
+	{
+		explosion->setPos(xCoor,yCoor);
+		yCoor = 449;
+		setPos(xCoor,yCoor);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 12)
+	{
+		explosion->setScale(0.12);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 13)
+	{
+		explosion->setScale(0.08);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 14)
+	{
+		explosion->setScale(0.06);
+		rotateCount++;
+	}
+	else if(yCoor >= 370 && rotateCount == 15)
+	{
+		explosion->setPos(xCoor,450);
+		yCoor = 450;
 		setPos(xCoor,yCoor);
 	}
+		
 }
 

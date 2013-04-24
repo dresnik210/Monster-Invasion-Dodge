@@ -57,6 +57,7 @@ private:
 	int timerInterval;
 	QPixmap* background;
 	QPixmap* bomberPic;
+	QPixmap* explosion;
 	QPixmap* rocketPic;
 	QPixmap* swerverPic;
 	QPixmap* flyerPic;
