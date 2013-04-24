@@ -8,6 +8,7 @@ class Bouncer : public Monster, public QGraphicsPixmapItem
   public:
   	Bouncer(int x, int y, QPixmap& pixmap);
   	void move();
+  	int bounceCheck;
   private:
 
 };
