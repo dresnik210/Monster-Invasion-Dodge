@@ -65,7 +65,7 @@ void MainWindow::stopTimer()
 
 void MainWindow::handleTimer() /** Function for tile animation */
 {
-    std::cout << timerCount << std::endl;
+    //std::cout << timerCount << std::endl;
     if(timerCount == 50)
     {
     	timerCount = 0;
@@ -93,8 +93,13 @@ void MainWindow::handleTimer() /** Function for tile animation */
     for(unsigned int i=0;i<monsterList.size();i++)
     {
     	monsterList[i]->move();
+    	if(monsterList[i]->getYCoor() >= 450)
+    	{
+    		monsterList.erase(monsterList.begin()+i);
+    	}
     }
     timerCount++;
+    std::cout << "List size: " << monsterList.size() << std::endl;
 }
 
 void MainWindow::spawnBomber()

@@ -10,6 +10,7 @@ class Monster
   public:
 	virtual ~Monster() { };
 	virtual void move() = 0;
+	virtual int getYCoor() { return yCoor; };
   
   protected:
   	int xCoor;
