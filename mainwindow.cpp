@@ -12,20 +12,47 @@ MainWindow::MainWindow()  {
     background = new QPixmap("sky.jpg");
     scene->addPixmap((background->scaled(400,400)));
     
+    /** Creates the start, pause, and quit buttons */
     start = new QPushButton("Start");
     pause = new QPushButton("Pause");
     quit = new QPushButton("Quit");
-
-    mainLayout = new QVBoxLayout;
     
+    /** Adds the start, pause, and quit buttons to horizonal box */
     buttonsRow = new QHBoxLayout;
     buttonsRow->addWidget(start);
     buttonsRow->addWidget(pause);
     buttonsRow->addWidget(quit);
     
-    /** Adds every row to overall display */
+    /** Creates entry line for user name */
+    nameEntry = new QLineEdit;
+    
+    /** Adds user name entry line to a QForm */
+    nameRow = new QFormLayout;
+    nameRow->addRow("Enter player name:", nameEntry);
+    
+    /** Creates name and score displays */
+    name = new QLineEdit;
+    score = new QLineEdit;
+    score->setText("0");
+    name->setReadOnly(true);
+    score->setReadOnly(true);
+    nameDisplay = new QFormLayout;
+    nameDisplay->addRow("Player:", name);
+    scoreDisplay = new QFormLayout;
+	scoreDisplay->addRow("Score:", score);
+	nameScoreRow = new QHBoxLayout;
+	nameScoreRow->addLayout(nameDisplay);
+	nameScoreRow->addLayout(scoreDisplay);
+    
+    
+    /** Creates main vertical layout */
+    mainLayout = new QVBoxLayout;
+    
+    /** Adds every row to vertical layout */
     mainLayout->addLayout(buttonsRow);
+    mainLayout->addLayout(nameRow);
     mainLayout->addWidget(view);
+    mainLayout->addLayout(nameScoreRow);
     
     this->setLayout(mainLayout);
     
@@ -82,6 +109,9 @@ void MainWindow::quitFunc()
 
 void MainWindow::startTimer()
 {
+	QString nameString;
+	nameString = nameEntry->text();
+	name->setText(nameString);
 	timer->start();	
 	setFocus();
 }
@@ -129,6 +159,9 @@ void MainWindow::handleTimer() /** Function for tile animation */
     	if(monsterList[i]->getYCoor() > 400)
     	{
     		scoreCount++;
+    		QString scoreString;
+    		scoreString = QString::number(scoreCount);
+    		score->setText(scoreString);
     		monsterList.erase(monsterList.begin()+i);	
     	}
     }

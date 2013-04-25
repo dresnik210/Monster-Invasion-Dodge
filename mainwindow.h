@@ -48,10 +48,17 @@ private:
     QPushButton *start;
     QPushButton *pause;
     QPushButton *quit;
+    QLineEdit *nameEntry;
+    QLineEdit *name;
+    QLineEdit *score;
+    QFormLayout *nameRow;
+    QFormLayout *nameDisplay;
+    QFormLayout *scoreDisplay;
     QGraphicsScene *scene;
 	QGraphicsView *view;
 	QVBoxLayout *mainLayout;
 	QHBoxLayout *buttonsRow;
+	QHBoxLayout *nameScoreRow;
 	QTimer *timer;
 	int timerCount;
 	int timerInterval;
