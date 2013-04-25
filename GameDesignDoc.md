@@ -7,11 +7,11 @@ The primary "things" I will have are a user controlled "hero" and five different
 The hero and each type of monster will look different through the use of PixMapItems.
 
 The five types of monsters are as follows:
-  *`1.` Bombers: big monsters that move straight down at a slow pace
-  *`2.` Rockets: small monsters that move straight down at a fast pace
-  *`3.` Swervers: medium sized monsters that zig zag as they come down the screen
-  *`4.` Flyers: medium sized monsters that come down in a stair pattern
-  *`5.` Bouncers: medium sized monsters that come down at a medium pace and bounce back up once after hitting the bottom of the screen
+  *`1.` Bombers: move straight down, land on the ground, shake for a couple seconds, and explode
+  *`2.` Rockets: move straight down at a fast pace
+  *`3.` Swervers: move in a zig zag as they come down the screen
+  *`4.` Flyers: move downwards and sidewards in a randomized stair pattern (if they reach the edge of the screen they reappear on the opposite side)
+  *`5.` Bouncers: move straight down and bounce back up one time after hitting the bottom of the screen, then resume moving downwards
   
 ## Part 2
 

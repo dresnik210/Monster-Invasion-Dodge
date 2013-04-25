@@ -5,9 +5,10 @@
   + USC ID: 4571010169
 
 ### Game Information
-  + Game Name: myAwsomeGame
-  + Game Description: One sentence game description
+  + Game Name: Monster Invasion Dodge
+  + Game Description: You control a hero who must dodge the monsters falling from the sky!
   + [Game Design Doc](GameDesignDoc.md)
+  + All images taken from http://www.clker.com/ except for sky background, which came from blutoothwhitening.co.uk.
 
 
 ### Compile & Run Instructions
