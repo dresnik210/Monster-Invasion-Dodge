@@ -79,7 +79,7 @@ void Bomber::move()
 	else if(yCoor >= 370 && rotateCount == 11)
 	{
 		explosion->setPos(xCoor,yCoor);
-		yCoor = 449;
+		yCoor = 400;
 		setPos(xCoor,yCoor);
 		rotateCount++;
 	}

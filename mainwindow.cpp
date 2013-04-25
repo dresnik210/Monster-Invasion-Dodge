@@ -49,6 +49,8 @@ MainWindow::MainWindow()  {
 	
 	user = new UserPlayer(*userPic);
 	scene->addItem(user);
+	
+	scoreCount = 0;
 }
 
 MainWindow::~MainWindow()
@@ -124,9 +126,10 @@ void MainWindow::handleTimer() /** Function for tile animation */
     	{
     		stopTimer();
     	}
-    	if(monsterList[i]->getYCoor() >= 450)
+    	if(monsterList[i]->getYCoor() > 400)
     	{
-    		monsterList.erase(monsterList.begin()+i);
+    		scoreCount++;
+    		monsterList.erase(monsterList.begin()+i);	
     	}
     }
     timerCount++;

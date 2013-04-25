@@ -65,6 +65,7 @@ private:
 	QPixmap* userPic;
 	UserPlayer* user;
 	std::vector<Monster*> monsterList;
+	int scoreCount;
 	
 public slots:
 	void quitFunc();
