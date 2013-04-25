@@ -40,6 +40,7 @@ class MainWindow : public QWidget {
 public:
     explicit MainWindow();
     ~MainWindow();
+    static int const EXIT_CODE_REBOOT = -1;
     
 protected:
 	void keyPressEvent(QKeyEvent *e);
@@ -48,17 +49,22 @@ private:
     QPushButton *start;
     QPushButton *pause;
     QPushButton *quit;
+    QPushButton *restart;
+    QPushButton *quit2;
     QLineEdit *nameEntry;
     QLineEdit *name;
     QLineEdit *score;
+    QLineEdit *endGameMessage;
     QFormLayout *nameRow;
     QFormLayout *nameDisplay;
     QFormLayout *scoreDisplay;
     QGraphicsScene *scene;
 	QGraphicsView *view;
 	QVBoxLayout *mainLayout;
+	QVBoxLayout *restartLayout;
 	QHBoxLayout *buttonsRow;
 	QHBoxLayout *nameScoreRow;
+	QWidget *restartBox;
 	QTimer *timer;
 	int timerCount;
 	int timerInterval;
@@ -84,6 +90,7 @@ public slots:
 	void spawnSwerver();
 	void spawnFlyer();
 	void spawnBouncer();
+	void restartGame();
 };
 
 #endif // MAINWINDOW_H

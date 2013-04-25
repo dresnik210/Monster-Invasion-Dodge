@@ -54,6 +54,20 @@ MainWindow::MainWindow()  {
     mainLayout->addWidget(view);
     mainLayout->addLayout(nameScoreRow);
     
+    endGameMessage = new QLineEdit;
+    endGameMessage->setReadOnly(true);
+    endGameMessage->setText("Game over! Want to play again?");
+    endGameMessage->setFixedWidth(223);
+    restart = new QPushButton("Restart");
+    quit2 = new QPushButton("Quit");
+    
+    restartLayout = new QVBoxLayout;
+    restartLayout->addWidget(endGameMessage);
+    restartLayout->addWidget(restart);
+    restartLayout->addWidget(quit2);
+    restartBox = new QWidget;
+    restartBox->setLayout(restartLayout);
+    
     this->setLayout(mainLayout);
     
     timer = new QTimer(this);
@@ -64,7 +78,9 @@ MainWindow::MainWindow()  {
     
     QObject::connect(start,SIGNAL(clicked()),this,SLOT(startTimer()));
     QObject::connect(pause,SIGNAL(clicked()),this,SLOT(stopTimer()));
-    QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc())); 
+    QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc()));
+    QObject::connect(quit2,SIGNAL(clicked()),this,SLOT(quitFunc())); 
+    QObject::connect(restart,SIGNAL(clicked()),this,SLOT(restartGame()));
     
     bomberPic = new QPixmap("bomber.png");
     explosion = new QPixmap("explosion.png");
@@ -155,6 +171,7 @@ void MainWindow::handleTimer() /** Function for tile animation */
     	if(monsterList[i]->collidesWithItem(user))
     	{
     		stopTimer();
+    		restartBox->show();
     	}
     	if(monsterList[i]->getYCoor() > 400)
     	{
@@ -208,4 +225,9 @@ void MainWindow::spawnBouncer()
 	scene->addItem(newBouncer);
 	monsterList.push_back(newBouncer);
 }
-	
+
+void MainWindow::restartGame()
+{
+	exit(EXIT_CODE_REBOOT);
+}
+
