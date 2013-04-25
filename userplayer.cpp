@@ -28,3 +28,9 @@ void UserPlayer::moveRight()
 	setPos(xCoor,yCoor);
 }
 
+void UserPlayer::resetPos()
+{
+	xCoor = 170;
+	yCoor = 327;
+	setPos(xCoor,yCoor);
+}

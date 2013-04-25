@@ -40,7 +40,6 @@ class MainWindow : public QWidget {
 public:
     explicit MainWindow();
     ~MainWindow();
-    static int const EXIT_CODE_REBOOT = -1;
     
 protected:
 	void keyPressEvent(QKeyEvent *e);
@@ -50,19 +49,24 @@ private:
     QPushButton *pause;
     QPushButton *quit;
     QPushButton *restart;
+    QPushButton *instructions;
     QPushButton *quit2;
     QLineEdit *nameEntry;
     QLineEdit *name;
     QLineEdit *score;
+    QLineEdit *lives;
     QLineEdit *endGameMessage;
+    QTextEdit *instructionsBox;
     QFormLayout *nameRow;
     QFormLayout *nameDisplay;
     QFormLayout *scoreDisplay;
+    QFormLayout *livesDisplay;
     QGraphicsScene *scene;
 	QGraphicsView *view;
 	QVBoxLayout *mainLayout;
 	QVBoxLayout *restartLayout;
 	QHBoxLayout *buttonsRow;
+	QHBoxLayout *buttonsRow2;
 	QHBoxLayout *nameScoreRow;
 	QWidget *restartBox;
 	QTimer *timer;
@@ -79,6 +83,7 @@ private:
 	UserPlayer* user;
 	std::vector<Monster*> monsterList;
 	int scoreCount;
+	int livesCount;
 	
 public slots:
 	void quitFunc();
@@ -91,6 +96,7 @@ public slots:
 	void spawnFlyer();
 	void spawnBouncer();
 	void restartGame();
+	void showInstructions();
 };
 
 #endif // MAINWINDOW_H
