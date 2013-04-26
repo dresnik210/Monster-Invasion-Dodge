@@ -70,6 +70,7 @@ MainWindow::MainWindow()  {
     mainLayout->addWidget(view);
     mainLayout->addLayout(nameScoreRow);
     
+    /** Creates elements for restart box */
     endGameMessage = new QLineEdit;
     endGameMessage->setReadOnly(true);
     endGameMessage->setText("Game over! Want to play again?");
@@ -77,10 +78,12 @@ MainWindow::MainWindow()  {
     restart = new QPushButton("Restart");
     quit2 = new QPushButton("Quit");
     
+    /** Creates instructions box */
     instructionsBox = new QTextEdit;
     instructionsBox->setReadOnly(true);
     instructionsBox->setText("Move the super hero left or right using the arrow keys to dodge the monsters. You only have one life so make it count!");
     
+    /** Creates restart box */
     restartLayout = new QVBoxLayout;
     restartLayout->addWidget(endGameMessage);
     restartLayout->addWidget(restart);
@@ -90,12 +93,14 @@ MainWindow::MainWindow()  {
     
     this->setLayout(mainLayout);
     
+    /** Creates timer */
     timer = new QTimer(this);
     timerInterval = 100;
     timer->setInterval(timerInterval);
     connect(timer, SIGNAL(timeout()), this, SLOT(handleTimer()));
     timerCount = 0;
     
+    /** Connects all buttons to slots */
     QObject::connect(start,SIGNAL(clicked()),this,SLOT(startTimer()));
     QObject::connect(pause,SIGNAL(clicked()),this,SLOT(stopTimer()));
     QObject::connect(quit,SIGNAL(clicked()),this,SLOT(quitFunc()));
@@ -103,6 +108,7 @@ MainWindow::MainWindow()  {
     QObject::connect(restart,SIGNAL(clicked()),this,SLOT(restartGame()));
     QObject::connect(instructions,SIGNAL(clicked()),this,SLOT(showInstructions()));
     
+    /** Creates pixmaps for all photos */
     bomberPic = new QPixmap("bomber.png");
     explosion = new QPixmap("explosion.png");
     rocketPic = new QPixmap("rocket.png");
@@ -111,6 +117,7 @@ MainWindow::MainWindow()  {
 	bouncerPic = new QPixmap("bouncer.png");
 	userPic = new QPixmap("userplayer.png");
 	
+	/** Creates user player */
 	user = new UserPlayer(*userPic);
 	scene->addItem(user);
 	
@@ -163,7 +170,8 @@ void MainWindow::stopTimer()
 	timer->stop();
 }
 
-void MainWindow::handleTimer() /** Function for tile animation */
+/** Sets what timer does at certain intervals */
+void MainWindow::handleTimer()
 {
     if(timerCount == 30)
     {
@@ -255,6 +263,7 @@ void MainWindow::spawnBouncer()
 	monsterList.push_back(newBouncer);
 }
 
+/** Resets game for new play session */
 void MainWindow::restartGame()
 {
 	restartBox->hide();
