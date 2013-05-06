@@ -51,12 +51,14 @@ private:
     QPushButton *restart;
     QPushButton *instructions;
     QPushButton *quit2;
+    QPushButton *highScores;
     QLineEdit *nameEntry;
     QLineEdit *name;
     QLineEdit *score;
     QLineEdit *lives;
     QLineEdit *endGameMessage;
     QTextEdit *instructionsBox;
+    QTextEdit *highScoresBox;
     QFormLayout *nameRow;
     QFormLayout *nameDisplay;
     QFormLayout *scoreDisplay;
@@ -97,6 +99,7 @@ public slots:
 	void spawnBouncer();
 	void restartGame();
 	void showInstructions();
+	void showHighScores();
 };
 
 #endif // MAINWINDOW_H

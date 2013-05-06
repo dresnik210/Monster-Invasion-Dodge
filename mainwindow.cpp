@@ -77,17 +77,23 @@ MainWindow::MainWindow()  {
     endGameMessage->setFixedWidth(222);
     restart = new QPushButton("Restart");
     quit2 = new QPushButton("Quit");
+    highScores = new QPushButton("View High Scores");
     
     /** Creates instructions box */
     instructionsBox = new QTextEdit;
     instructionsBox->setReadOnly(true);
     instructionsBox->setText("Move the super hero left or right using the arrow keys to dodge the monsters. You only have one life so make it count!");
     
+    /**Creates high scores box */
+    highScoresBox = new QTextEdit;
+    highScoresBox->setReadOnly(true);
+    
     /** Creates restart box */
     restartLayout = new QVBoxLayout;
     restartLayout->addWidget(endGameMessage);
     restartLayout->addWidget(restart);
     restartLayout->addWidget(quit2);
+    restartLayout->addWidget(highScores);
     restartBox = new QWidget;
     restartBox->setLayout(restartLayout);
     
@@ -107,6 +113,7 @@ MainWindow::MainWindow()  {
     QObject::connect(quit2,SIGNAL(clicked()),this,SLOT(quitFunc())); 
     QObject::connect(restart,SIGNAL(clicked()),this,SLOT(restartGame()));
     QObject::connect(instructions,SIGNAL(clicked()),this,SLOT(showInstructions()));
+    QObject::connect(highScores,SIGNAL(clicked()),this,SLOT(showHighScores()));
     
     /** Creates pixmaps for all photos */
     bomberPic = new QPixmap("bomber.png");
@@ -286,5 +293,10 @@ void MainWindow::restartGame()
 void MainWindow::showInstructions()
 {
 	instructionsBox->show();
+}
+
+void MainWindow::showHighScores()
+{
+	highScoresBox->show();
 }
 
