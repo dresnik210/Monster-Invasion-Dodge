@@ -88,7 +88,11 @@ private:
 	std::vector<Monster*> monsterList;
 	int scoreCount;
 	int livesCount;
-	struct highScorePair;
+	struct highScorePair
+	{
+		int score;
+		std::string fullLine;
+	};
 	void selectSort();
 	std::vector<highScorePair*> highScoresList;
 	

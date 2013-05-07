@@ -35,7 +35,7 @@ MainWindow::MainWindow()  {
     
     /** Adds user name entry line to a QForm */
     nameRow = new QFormLayout;
-    nameRow->addRow("Enter player name:", nameEntry);
+    nameRow->addRow("Enter player's first name:", nameEntry);
     
     /** Creates name and score displays */
     name = new QLineEdit;
@@ -130,6 +130,37 @@ MainWindow::MainWindow()  {
 	
 	scoreCount = 0;
 	livesCount = 1;
+	
+	/** Reads in high scores */
+	std::ifstream fin("highscores.txt");
+	if (fin.is_open())
+	{
+		while(!fin.eof())
+		{
+			std::stringstream ss;
+			std::stringstream convert;
+			std::string name;
+			std::string num;
+			int numResult;
+			getline(fin,name,' ');
+			getline(fin,num);
+			name.append(" ");
+			name.append(num);
+			convert << num; 
+			convert >> numResult;
+			highScorePair* newHighScore = new highScorePair;
+			newHighScore->fullLine = name;
+			newHighScore->score = numResult;
+			highScoresList.push_back(newHighScore);
+		}
+	}
+	fin.close();
+	
+	if(highScoresList.size() > 1)
+	{
+		highScoresList.pop_back();
+		selectSort();
+	}
 }
 
 MainWindow::~MainWindow()
@@ -137,12 +168,6 @@ MainWindow::~MainWindow()
     delete scene;
     delete view;
 }
-
-struct MainWindow::highScorePair
-{
-	int score;
-	std::string fullLine;
-};
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
@@ -162,6 +187,15 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 
 void MainWindow::quitFunc()
 {
+	selectSort();
+	std::ofstream output("highscores.txt",std::ofstream::out);
+	for(unsigned int i=0;i<highScoresList.size();i++)
+	{
+		output << highScoresList[i]->fullLine << std::endl;
+	}
+	
+	output.close();
+	
 	exit(EXIT_FAILURE);
 }
 
@@ -171,7 +205,7 @@ void MainWindow::startTimer()
 	nameString = nameEntry->text();
 	if(nameString == "")
 	{
-		nameString = "Nameless hero";
+		nameString = "Unknown";
 	}
 	name->setText(nameString);
 	timer->start();	
@@ -220,6 +254,25 @@ void MainWindow::handleTimer()
   			livesCount--;
   			lives->setText("0");
     		stopTimer();
+    		
+    		QString nameString;
+			QString scoreString;
+			std::string temp;
+			nameString = name->text();
+			scoreString = score->text();
+			temp = nameString.toStdString();
+			temp.append(" ");
+			temp.append(scoreString.toStdString());
+			highScorePair* newHighScore = new highScorePair;
+			newHighScore->fullLine = temp;
+			temp = scoreString.toStdString();
+			std::stringstream convert;
+			int numResult;
+			convert << temp;
+			convert >> numResult;
+			newHighScore->score = numResult;
+			highScoresList.push_back(newHighScore);
+			
     		restartBox->show();
     	}
     	if(monsterList[i]->getYCoor() > 400)
@@ -302,46 +355,13 @@ void MainWindow::showInstructions()
 }
 
 void MainWindow::showHighScores()
-{
-	std::ifstream fin("highscores.txt");
-	if (fin.is_open())
+{	
+	highScoresBox->setText("");
+
+	if(highScoresList.size() > 1)
 	{
-		while(!fin.eof())
-		{
-			std::stringstream ss;
-			std::stringstream convert;
-			std::string name;
-			std::string num;
-			int numResult;
-			getline(fin,name,' ');
-			getline(fin,num);
-			name.append(" ");
-			name.append(num);
-			convert << num; 
-			convert >>numResult;
-			highScorePair* newHighScore = new highScorePair;
-			newHighScore->fullLine = name;
-			newHighScore->score = (numResult);
-			highScoresList.push_back(newHighScore);
-		}
+		selectSort();
 	}
-	else
-	{
-		
-	}
-	fin.close();
-	
-	highScoresList.pop_back();
-	
-	selectSort();
-	
-	/*std::cout << "List size: " << highScoresList.size() << std::endl;
-	
-	for(unsigned int i=0;i<highScoresList.size();i++)
-	{
-		std::cout << highScoresList[i]->fullLine << std::endl;
-		std::cout << highScoresList[i]->score << std::endl;
-	}*/
 	
 	highScoresBox->append("High Scores");
 	highScoresBox->append("");
