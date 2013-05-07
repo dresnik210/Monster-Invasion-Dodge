@@ -138,6 +138,12 @@ MainWindow::~MainWindow()
     delete view;
 }
 
+struct MainWindow::highScorePair
+{
+	int score;
+	std::string fullLine;
+};
+
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
 	if(timer->isActive())
@@ -297,6 +303,71 @@ void MainWindow::showInstructions()
 
 void MainWindow::showHighScores()
 {
+	std::ifstream fin("highscores.txt");
+	if (fin.is_open())
+	{
+		while(!fin.eof())
+		{
+			std::stringstream ss;
+			std::stringstream convert;
+			std::string name;
+			std::string num;
+			int numResult;
+			getline(fin,name,' ');
+			getline(fin,num);
+			name.append(" ");
+			name.append(num);
+			convert << num; 
+			convert >>numResult;
+			highScorePair* newHighScore = new highScorePair;
+			newHighScore->fullLine = name;
+			newHighScore->score = (numResult);
+			highScoresList.push_back(newHighScore);
+		}
+	}
+	else
+	{
+		
+	}
+	fin.close();
+	
+	highScoresList.pop_back();
+	
+	selectSort();
+	
+	/*std::cout << "List size: " << highScoresList.size() << std::endl;
+	
+	for(unsigned int i=0;i<highScoresList.size();i++)
+	{
+		std::cout << highScoresList[i]->fullLine << std::endl;
+		std::cout << highScoresList[i]->score << std::endl;
+	}*/
+	
+	highScoresBox->append("High Scores");
+	highScoresBox->append("");
+	
+	for(unsigned int i=0;i<highScoresList.size();i++)
+	{	
+		QString qScore = QString::fromStdString(highScoresList[i]->fullLine);
+		highScoresBox->append(qScore);
+	}
+
 	highScoresBox->show();
+}
+
+void MainWindow::selectSort()
+{
+	for(unsigned int i=0;i<highScoresList.size()-1;i++)
+	{
+		int max = i;
+		for(unsigned int j=i+1;j<highScoresList.size();j++)
+		{
+			if((highScoresList[j]->score)>(highScoresList[max]->score))
+			{
+				max = j;
+			}
+		}
+		std::swap(highScoresList[i],highScoresList[max]);
+	}
 }
 

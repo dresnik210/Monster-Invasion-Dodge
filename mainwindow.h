@@ -23,6 +23,8 @@
 #include <QRectF>
 #include <QPixmap>
 #include <QKeyEvent>
+#include <fstream>
+#include <sstream>
 
 #include "bomber.h"
 #include "rocket.h"
@@ -86,6 +88,9 @@ private:
 	std::vector<Monster*> monsterList;
 	int scoreCount;
 	int livesCount;
+	struct highScorePair;
+	void selectSort();
+	std::vector<highScorePair*> highScoresList;
 	
 public slots:
 	void quitFunc();
