@@ -58,6 +58,7 @@ private:
     QLineEdit *name;
     QLineEdit *score;
     QLineEdit *lives;
+    QLineEdit *level;
     QLineEdit *endGameMessage;
     QTextEdit *instructionsBox;
     QTextEdit *highScoresBox;
@@ -65,6 +66,7 @@ private:
     QFormLayout *nameDisplay;
     QFormLayout *scoreDisplay;
     QFormLayout *livesDisplay;
+    QFormLayout *levelDisplay;
     QGraphicsScene *scene;
 	QGraphicsView *view;
 	QVBoxLayout *mainLayout;
@@ -84,10 +86,17 @@ private:
 	QPixmap* flyerPic;
 	QPixmap* bouncerPic;
 	QPixmap* userPic;
+	QPixmap* cloudySky;
+	QPixmap* rainySky;
+	QGraphicsPixmapItem* backgroundItem;
+	QGraphicsPixmapItem* cloudySkyItem;
+	QGraphicsPixmapItem* rainySkyItem;
 	UserPlayer* user;
 	std::vector<Monster*> monsterList;
 	int scoreCount;
 	int livesCount;
+	int levelCount;
+	int levelInterval;
 	struct highScorePair
 	{
 		int score;

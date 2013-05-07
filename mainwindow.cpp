@@ -10,7 +10,21 @@ MainWindow::MainWindow()  {
     scene->setSceneRect(0,0,400,400);
     
     background = new QPixmap("sky.jpg");
-    scene->addPixmap((background->scaled(400,400)));
+    backgroundItem = new QGraphicsPixmapItem(*background);
+    backgroundItem->setScale(0.15);
+    scene->addItem(backgroundItem);
+    
+    cloudySky = new QPixmap("cloudysky.jpg");
+    cloudySkyItem = new QGraphicsPixmapItem(*cloudySky);
+    cloudySkyItem->setScale(0.9);
+    scene->addItem(cloudySkyItem);
+    cloudySkyItem->setVisible(false);
+    
+    rainySky = new QPixmap("rainysky.jpg");
+    rainySkyItem = new QGraphicsPixmapItem(*rainySky);
+    rainySkyItem->setScale(0.35);
+    scene->addItem(rainySkyItem);
+    rainySkyItem->setVisible(false);
     
     /** Creates the start and pause buttons */
     start = new QPushButton("Start");
@@ -41,24 +55,31 @@ MainWindow::MainWindow()  {
     name = new QLineEdit;
     score = new QLineEdit;
     lives = new QLineEdit;
+	level = new QLineEdit;
     score->setText("0");
     lives->setText("1");
+    level->setText("1");
     name->setReadOnly(true);
     score->setReadOnly(true);
     lives->setReadOnly(true);
+    level->setReadOnly(true);
+    name->setFixedWidth(120);
     score->setFixedWidth(40);
     lives->setFixedWidth(20);
+    level->setFixedWidth(20);
     nameDisplay = new QFormLayout;
     nameDisplay->addRow("Player:", name);
     scoreDisplay = new QFormLayout;
 	scoreDisplay->addRow("Score:", score);
 	livesDisplay = new QFormLayout;
 	livesDisplay->addRow("Lives:", lives);
+	levelDisplay = new QFormLayout;
+	levelDisplay->addRow("Level:",level);
 	nameScoreRow = new QHBoxLayout;
 	nameScoreRow->addLayout(nameDisplay);
 	nameScoreRow->addLayout(scoreDisplay);
 	nameScoreRow->addLayout(livesDisplay);
-    
+    nameScoreRow->addLayout(levelDisplay);
     
     /** Creates main vertical layout */
     mainLayout = new QVBoxLayout;
@@ -130,6 +151,8 @@ MainWindow::MainWindow()  {
 	
 	scoreCount = 0;
 	livesCount = 1;
+	levelCount = 1;
+	levelInterval = 0;
 	
 	/** Reads in high scores */
 	std::ifstream fin("highscores.txt");
@@ -223,6 +246,7 @@ void MainWindow::handleTimer()
     if(timerCount == 30)
     {
     	timerCount = 0;
+    	levelInterval++; 
     	timerInterval = timerInterval - 2;
     	timer->setInterval(timerInterval);
     }
@@ -245,6 +269,22 @@ void MainWindow::handleTimer()
 			spawnBouncer();
 			break;
 		}
+    }
+    if(levelInterval == 9)
+    {
+    	levelCount++;
+    	QString levelString;
+    	levelString = QString::number(levelCount);
+    	level->setText(levelString);
+    	levelInterval = 0;
+    }
+    if(levelCount == 2)
+    {
+    	cloudySkyItem->setVisible(true);
+    }
+    if(levelCount == 3)
+    {
+    	rainySkyItem->setVisible(true);
     }
     for(unsigned int i=0;i<monsterList.size();i++)
     {
@@ -347,6 +387,11 @@ void MainWindow::restartGame()
     score->setText("0");
     livesCount = 1;
     lives->setText("1");
+    levelCount = 1;
+    level->setText("1");
+    levelInterval = 0;
+    cloudySkyItem->setVisible(false);
+    rainySkyItem->setVisible(false);
 }
 
 void MainWindow::showInstructions()
