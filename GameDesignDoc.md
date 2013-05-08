@@ -6,21 +6,23 @@ The primary "things" I will have are a user controlled "hero" and five different
 
 The hero and each type of monster will look different through the use of PixMapItems.
 
+Two of the monsters have AI and will pursue the player (flyers and bouncers).
+
 The five types of monsters are as follows:
 
-  *`1.` Bombers: move straight down, land on the ground, shake for a couple seconds, and explode
+  *`1.` Bombers: move straight down, land on the ground, shake for a couple seconds, and explode.
   		![Bomber Photo](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/bomber.png?raw=true "Bomber")
  
-  *`2.` Rockets: move straight down at a fast pace
+  *`2.` Rockets: move straight down at a fast pace.
   		![Rocket Photo](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/rocket.png?raw=true "Rocket")
 
-  *`3.` Swervers: move in a zig zag as they come down the screen
+  *`3.` Swervers: move in a zig zag as they come down the screen.
   		![Swerver Photo](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/swerver.png?raw=true "Swerver")
 
-  *`4.` Flyers: move downwards and sidewards in a randomized stair pattern (if they reach the edge of the screen they reappear on the opposite side)
+  *`4.` Flyers: move downwards and sidewards in a randomized stair pattern while moving towards the player's current location (if they reach the edge of the screen they reappear on the opposite side). 
   		![Flyer Photo](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/flyer.png?raw=true "Flyer")
 
-  *`5.` Bouncers: move straight down and bounce back up one time after hitting the bottom of the screen, then resume moving downwards
+  *`5.` Bouncers: move straight down and bounce one time towards the player's location before leaving the screen.
   		![Bouncer Photo](https://github.com/usc-csci102-spring2013/game_dylanres/blob/master/bouncer.png?raw=true "Bouncer")
 
   
