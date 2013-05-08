@@ -252,7 +252,7 @@ void MainWindow::handleTimer()
     }
     if(timerCount == 0)
     {
-    	switch(4/*rand() % 5*/){
+    	switch(rand() % 5){
 		case 0:
 			spawnBomber();
 			break;

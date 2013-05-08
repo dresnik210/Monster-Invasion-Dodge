@@ -10,7 +10,7 @@ class Swerver : public Monster
   	void move();
   	void setPlayerXCoor(int x);
   private:
-
+  
 };
 
 #endif

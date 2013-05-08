@@ -10,7 +10,7 @@ class Flyer : public Monster
   	void move();
   	void setPlayerXCoor(int x);
   private:
-
+	bool rightOfPlayer;
 };
 
 #endif
