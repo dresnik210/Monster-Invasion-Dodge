@@ -8,6 +8,7 @@ class Flyer : public Monster
   public:
   	Flyer(int x, int y, QPixmap& pixmap);
   	void move();
+  	void setPlayerXCoor(int x);
   private:
 
 };

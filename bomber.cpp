@@ -12,6 +12,7 @@ Bomber::Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap) : Monste
 	explosion = new QGraphicsPixmapItem(explosionPixmap);
 	explosion->setPos(500,500);
 	explosion->setScale(0.2);
+	playerXCoor = 0;
 }
 
 void Bomber::move()
@@ -105,5 +106,10 @@ void Bomber::move()
 		setPos(xCoor,yCoor);
 	}
 		
+}
+
+void Bomber::setPlayerXCoor(int x)
+{
+	playerXCoor = x;
 }
 

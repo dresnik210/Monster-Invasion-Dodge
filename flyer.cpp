@@ -8,6 +8,7 @@ Flyer::Flyer(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 	yVelocity = 8;
 	setPos(x,y);
 	setScale(0.10);
+	playerXCoor = 0;
 }
 
 void Flyer::move()
@@ -26,5 +27,10 @@ void Flyer::move()
 		xCoor = 368;
 	}
 	setPos(xCoor,yCoor);
+}
+
+void Flyer::setPlayerXCoor(int x)
+{
+	playerXCoor = x;
 }
 

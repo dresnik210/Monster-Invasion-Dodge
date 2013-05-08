@@ -8,6 +8,7 @@ class Rocket : public Monster
   public:
   	Rocket(int x, int y, QPixmap& pixmap);
   	void move();
+  	void setPlayerXCoor(int x);
   private:
 
 };

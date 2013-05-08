@@ -8,6 +8,7 @@ Swerver::Swerver(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 	yVelocity = 5;
 	setPos(x,y);
 	setScale(0.08);
+	playerXCoor = 0;
 }
 
 void Swerver::move()
@@ -24,4 +25,10 @@ void Swerver::move()
 	yCoor = yCoor + yVelocity;
 	setPos(xCoor,yCoor);
 }
+
+void Swerver::setPlayerXCoor(int x)
+{
+	playerXCoor = x;
+}
+
 

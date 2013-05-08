@@ -8,6 +8,7 @@ class Swerver : public Monster
   public:
   	Swerver(int x, int y, QPixmap& pixmap);
   	void move();
+  	void setPlayerXCoor(int x);
   private:
 
 };

@@ -28,6 +28,11 @@ void UserPlayer::moveRight()
 	setPos(xCoor,yCoor);
 }
 
+int UserPlayer::getXCoor()
+{
+	return xCoor;
+}
+
 void UserPlayer::resetPos()
 {
 	xCoor = 170;

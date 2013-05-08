@@ -11,6 +11,7 @@ class Monster : public QGraphicsPixmapItem
   	Monster(QPixmap& pixmap);
 	virtual ~Monster();
 	virtual void move() = 0;
+	virtual void setPlayerXCoor(int x) = 0;
 	virtual int getYCoor() { return yCoor; };
   
   protected:
@@ -18,6 +19,7 @@ class Monster : public QGraphicsPixmapItem
 	int yCoor;
 	int xVelocity;
 	int yVelocity;
+	int playerXCoor;
 };
 
 #endif

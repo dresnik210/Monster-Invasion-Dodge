@@ -252,7 +252,7 @@ void MainWindow::handleTimer()
     }
     if(timerCount == 0)
     {
-    	switch(rand() % 5){
+    	switch(4/*rand() % 5*/){
 		case 0:
 			spawnBomber();
 			break;
@@ -288,6 +288,7 @@ void MainWindow::handleTimer()
     }
     for(unsigned int i=0;i<monsterList.size();i++)
     {
+    	monsterList[i]->setPlayerXCoor(user->getXCoor());
     	monsterList[i]->move();
     	if(monsterList[i]->collidesWithItem(user))
     	{

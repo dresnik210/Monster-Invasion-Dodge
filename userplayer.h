@@ -10,6 +10,7 @@ class UserPlayer : public QGraphicsPixmapItem
   	UserPlayer(QPixmap& pixmap);
   	void moveLeft();
   	void moveRight();
+  	int getXCoor();
   	void resetPos();
   private:
 	int xCoor;
