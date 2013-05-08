@@ -329,6 +329,7 @@ void MainWindow::handleTimer()
     timerCount++;
 }
 
+/** Spawns new bomber monster */
 void MainWindow::spawnBomber()
 {
 	int xVal = rand() % 380;
@@ -338,6 +339,7 @@ void MainWindow::spawnBomber()
 	monsterList.push_back(newBomber);
 }
 
+/** Spawns new rocket monster */
 void MainWindow::spawnRocket()
 {
 	int xVal = rand() % 380;
@@ -346,6 +348,7 @@ void MainWindow::spawnRocket()
 	monsterList.push_back(newRocket);
 }
 
+/** Spawns new swerver monster */
 void MainWindow::spawnSwerver()
 {
 	int xVal = rand() % 349+5;
@@ -354,6 +357,7 @@ void MainWindow::spawnSwerver()
 	monsterList.push_back(newSwerver);
 }
 
+/** Spawns new flyer monster */
 void MainWindow::spawnFlyer()
 {
 	int xVal = rand() % 380;
@@ -362,6 +366,7 @@ void MainWindow::spawnFlyer()
 	monsterList.push_back(newFlyer);
 }
 
+/** Spawns new bouncer monster */
 void MainWindow::spawnBouncer()
 {
 	int xVal = rand() % 380;
@@ -421,6 +426,7 @@ void MainWindow::showHighScores()
 	highScoresBox->show();
 }
 
+/** Selection sort for high scores */
 void MainWindow::selectSort()
 {
 	for(unsigned int i=0;i<highScoresList.size()-1;i++)

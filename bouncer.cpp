@@ -12,6 +12,7 @@ Bouncer::Bouncer(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 	playerXCoor = 0;
 }
 
+/** Moves monster for animation */
 void Bouncer::move()
 {
 	yCoor = yCoor + yVelocity;
@@ -29,6 +30,7 @@ void Bouncer::move()
 	setPos(xCoor,yCoor);
 }
 
+/** Imports location of player */
 void Bouncer::setPlayerXCoor(int x)
 {
 	playerXCoor = x;

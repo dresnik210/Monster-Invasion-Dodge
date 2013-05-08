@@ -11,6 +11,7 @@ Swerver::Swerver(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 	playerXCoor = 0;
 }
 
+/** Moves monster for animation */
 void Swerver::move()
 {
 	if(xCoor >= 350)
@@ -26,6 +27,7 @@ void Swerver::move()
 	setPos(xCoor,yCoor);
 }
 
+/** Imports location of player */
 void Swerver::setPlayerXCoor(int x)
 {
 	playerXCoor = x;

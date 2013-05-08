@@ -15,6 +15,7 @@ Bomber::Bomber(int x, int y, QPixmap& pixmap, QPixmap& explosionPixmap) : Monste
 	playerXCoor = 0;
 }
 
+/** Moves monster for animation */
 void Bomber::move()
 {
 	if(yCoor < 370)
@@ -108,6 +109,7 @@ void Bomber::move()
 		
 }
 
+/** Imports location of player */
 void Bomber::setPlayerXCoor(int x)
 {
 	playerXCoor = x;

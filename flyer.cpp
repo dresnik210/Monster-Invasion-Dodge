@@ -12,6 +12,7 @@ Flyer::Flyer(int x, int y, QPixmap& pixmap) : Monster(pixmap)
 	rightOfPlayer = false;
 }
 
+/** Moves monster for animation */
 void Flyer::move()
 {
 	switch(rand() % 2)
@@ -38,6 +39,7 @@ void Flyer::move()
 	setPos(xCoor,yCoor);
 }
 
+/** Determines if monster is to left or right of player */
 void Flyer::setPlayerXCoor(int x)
 {
 	if((xCoor-playerXCoor) > 0)
