@@ -192,6 +192,7 @@ MainWindow::~MainWindow()
     delete view;
 }
 
+/** Press key event for player movement */
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
 	if(timer->isActive())
@@ -208,6 +209,7 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 	}
 }
 
+/** Called when quit button is clicked */
 void MainWindow::quitFunc()
 {
 	selectSort();
@@ -222,6 +224,7 @@ void MainWindow::quitFunc()
 	exit(EXIT_FAILURE);
 }
 
+/** Called when start button is clicked */
 void MainWindow::startTimer()
 {
 	QString nameString;
@@ -235,6 +238,7 @@ void MainWindow::startTimer()
 	setFocus();
 }
 
+/** Called when pause button is clicked */
 void MainWindow::stopTimer()
 {
 	timer->stop();
@@ -400,11 +404,13 @@ void MainWindow::restartGame()
     rainySkyItem->setVisible(false);
 }
 
+/** Called by button to show instructions box */
 void MainWindow::showInstructions()
 {
 	instructionsBox->show();
 }
 
+/** Called by button to show high scores */
 void MainWindow::showHighScores()
 {	
 	highScoresBox->setText("");
