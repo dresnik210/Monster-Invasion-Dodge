@@ -10,6 +10,7 @@
   + [Game Design Doc](GameDesignDoc.md)
   + All images taken from http://www.clker.com/ except for sky background (blutoothwhitening.co.uk),
   	cloudy background (kids-myshot.nationalgeographic.com), and rainy background (hdw.eweb4.com).
+  + Program license can be viewed at https://github.com/dresnik210/Monster-Invasion-Dodge/blob/master/LICENSE.txt.
 
 
 ### Compile & Run Instructions
