@@ -24,8 +24,6 @@ make
 doxygen -g
 doxygen Doxyfile
 #Command to run
-./game_dylanres
+./Monster-Invasion-Dodge
 ```
 
-### Screenshots -- [Optional]
-You can either remove this section or add screenshots if you wish.
